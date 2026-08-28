@@ -45,4 +45,17 @@ describe("URL shortener API", () => {
     expect(response.status).toBe(400);
     expect(body.error).toBe("Invalid URL");
   });
+
+  it("Rejects wrong JSON", async () => {
+    const request = new Request(
+        "http://localhost:3000/api/urls",
+        {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json",
+            },
+            body: "not JSON jeje",
+        }
+    );
+  });
 });
