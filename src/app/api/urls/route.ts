@@ -71,7 +71,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         code,
-        shortUrl: `http://localhost:3000/${code}`,
+        shortUrl: `$(request.nextUrl.origin)/${code}`,
       },
       { status: 201 }
     );
