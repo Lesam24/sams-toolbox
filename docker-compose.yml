@@ -1,0 +1,41 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://toolbox:toolbox@db:5432/toolbox
+    depends_on:
+      db:
+        condition: service_healthy
+  
+  migrate:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    environment:
+      DATABASE_URL: postgresql://toolbox:toolbox@db:5432/toolbox
+    depends_on:
+      db:
+        condition: service_healthy
+    command: npm run db:migrate
+
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: toolbox
+      POSTGRES_PASSWORD: toolbox
+      POSTGRES_DB: toolbox
+    volumes:
+      - postgres_data:/var/lib/psotresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U toolbox -d toolbox"]
+      interval: 5s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  postgres_data:
