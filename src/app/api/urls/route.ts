@@ -71,7 +71,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         code,
-        shortUrl: `$(request.nextUrl.origin)/${code}`,
+        shortUrl: `${new URL(request.url).origin}/${code}`,
       },
       { status: 201 }
     );
