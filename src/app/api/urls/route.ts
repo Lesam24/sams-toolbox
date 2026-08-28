@@ -24,50 +24,61 @@ function generateCode(lenght = 6) {
 }
 
 export async function POST(request: Request) {
-    try {
-        const body = await request.json();
+  let body: unknown;
 
-        const result = createUrlSchema.safeParse(body);
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json(
+      { error: "Invalid JSON" },
+      { status: 400 }
+    );
+  }
 
-        if (!result.success) {
-            return NextResponse.json(
-                {error: "Invalid URL"},
-                {status: 400}
-            );
-        }
+  const result = createUrlSchema.safeParse(body);
 
-        const {url} = result.data;
+  if (!result.success) {
+    return NextResponse.json(
+      { error: "Invalid URL" },
+      { status: 400 }
+    );
+  }
 
-        let code = generateCode();
+  try {
+    const { url } = result.data;
 
-        while (true) {
-            const exists = await db
-             .select()
-             .from(shorturls)
-             .where(eq(shorturls.code, code))
-             .limit(1);
-            
-            if (exists.length == 0) {break}
+    let code = generateCode();
 
-            code = generateCode();
-        }
+    while (true) {
+      const existing = await db
+        .select()
+        .from(shorturls)
+        .where(eq(shorturls.code, code))
+        .limit(1);
 
-        await db.insert(shorturls).values({
-            code,
-            originalUrl: url,
-        });
+      if (existing.length === 0) {
+        break;
+      }
 
-        return NextResponse.json(
-            {
-                code,
-                shorturl: `http://localhost:3000/${code}`,
-            },
-            {status: 201}
-        );
-    } catch {
-        return NextResponse.json(
-            {error: "Ups, something went worng"},
-            {status: 500}
-        );
+      code = generateCode();
     }
+
+    await db.insert(shorturls).values({
+      code,
+      originalUrl: url,
+    });
+
+    return NextResponse.json(
+      {
+        code,
+        shortUrl: `http://localhost:3000/${code}`,
+      },
+      { status: 201 }
+    );
+  } catch {
+    return NextResponse.json(
+      { error: "Something went wrong" },
+      { status: 500 }
+    );
+  }
 }

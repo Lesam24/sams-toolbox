@@ -22,7 +22,7 @@ describe("URL shortener API", () => {
 
     expect(response.status).toBe(201);
     expect(body.code).toHaveLength(6);
-    expect(body.shorturl).toContain(body.code);
+    expect(body.shortUrl).toContain(body.code);
   });
 
   it("rejects an invalid URL", async () => {
@@ -47,15 +47,21 @@ describe("URL shortener API", () => {
   });
 
   it("Rejects wrong JSON", async () => {
-    const request = new Request(
-        "http://localhost:3000/api/urls",
-        {
-            method: "POST",
-            headers: {
-                "Content-type": "application/json",
-            },
-            body: "not JSON jeje",
-        }
-    );
-  });
+  const request = new Request(
+    "http://localhost:3000/api/urls",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: "not JSON jejej",
+    }
+  );
+
+  const response = await POST(request);
+  const body = await response.json();
+
+  expect(response.status).toBe(400);
+  expect(body.error).toBe("Invalid JSON");
+});
 });
