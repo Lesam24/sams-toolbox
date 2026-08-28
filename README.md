@@ -12,7 +12,7 @@ Built as a personal project and with open-source in mind. Contributions are welc
 * 📄 PDF Merger *(Coming soon)*
 * *More tools to come*
 
-## Framework
+## Frameworks
 
 * Next.js
 * TypeScript
