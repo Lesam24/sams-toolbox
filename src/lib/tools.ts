@@ -16,6 +16,12 @@ export const tools: Tool[] = [
         name: "PDF Merger",
         description: "Merge multiple PDFs into one",
         href: "/tools/pdf-merger",
-        available: false,
+        available: true,
     },
+    {
+        name: "QR Code Generator",
+        description: "Generate QR Codes from URL",
+        href: "/tools/qr-generator",
+        available: false,
+    }
 ];
