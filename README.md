@@ -9,7 +9,8 @@ Built as a personal project and with open-source in mind. Contributions are welc
 ## Features
 
 * 🔗 URL Shortener
-* 📄 PDF Merger *(Coming soon)*
+* 📄 PDF Merger
+* 📷 QR Code Generator *(Coming soon)*
 * *More tools to come*
 
 ## Frameworks
