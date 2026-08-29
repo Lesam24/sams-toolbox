@@ -8,10 +8,34 @@ body {
   padding: 0;
 }
 
+:root {
+  --background: #f5f5f5;
+  --foreground: #171717;
+  --surface: #ffffff;
+  --border: #ddd;
+  --hover: #f0f0f0;
+  --muted: #666;
+  --subtle: #888;
+  --disabled: #999;
+  --input-border: #ccc;
+}
+
+[data-theme="dark"] {
+  --background: #171717;
+  --foreground: #f5f5f5;
+  --surface: #242424;
+  --border: #3a3a3a;
+  --hover: #303030;
+  --muted: #aaa;
+  --subtle: #999;
+  --disabled: #777;
+  --input-border: #4a4a4a;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: #f5f5f5;
-  color: #171717;
+  background: var(--background);
+  color: var(--foreground);
 }
 
 a {
@@ -30,8 +54,8 @@ a {
   width: 250px;
   flex-shrink: 0;
   padding: 24px 16px;
-  border-right: 1px solid #ddd;
-  background: white;
+  border-right: 1px solid var(--border);
+  background: var(--surface);
 }
 
 .sidebar-brand {
@@ -51,7 +75,7 @@ a {
   font-size: 12px;
   font-weight: 600;
   text-transform: uppercase;
-  color: #888;
+  color: var(--subtle);
 }
 
 .sidebar-link {
@@ -64,11 +88,11 @@ a {
 }
 
 .sidebar-link:hover {
-  background: #f0f0f0;
+  background: var(--hover);
 }
 
 .sidebar-link.disabled {
-  color: #999;
+  color: var(--disabled);
   cursor: default;
 }
 
@@ -94,7 +118,7 @@ a {
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
-  color: #777;
+  color: var(--subtle);
   letter-spacing: 0.08em;
 }
 
@@ -105,7 +129,7 @@ a {
 
 .dashboard-header > p:last-child {
   margin: 0;
-  color: #666;
+  color: var(--muted);
   font-size: 18px;
 }
 
@@ -124,8 +148,8 @@ a {
 .tool-card {
   display: block;
   padding: 24px;
-  background: white;
-  border: 1px solid #ddd;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 12px;
   transition:
     transform 0.15s ease,
@@ -144,7 +168,7 @@ a {
 
 .tool-card p {
   margin: 0 0 24px;
-  color: #666;
+  color: var(--muted);
   line-height: 1.5;
 }
 
@@ -170,7 +194,7 @@ a {
 
 .tool-panel-header p:last-child {
   margin: 0;
-  color: #666;
+  color: var(--muted);
 }
 
 .tool-form {
@@ -182,8 +206,10 @@ a {
   flex: 1;
   min-width: 0;
   padding: 12px 14px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--input-border);
   border-radius: 8px;
+  background: var(--surface);
+  color: var(--foreground);
   font-size: 16px;
 }
 
@@ -191,8 +217,8 @@ a {
   padding: 12px 20px;
   border: 0;
   border-radius: 8px;
-  background: #171717;
-  color: white;
+  background: var(--foreground);
+  color: var(--background);
   font-size: 16px;
   cursor: pointer;
 }
@@ -210,19 +236,48 @@ a {
 .tool-result {
   margin-top: 24px;
   padding: 20px;
-  background: white;
-  border: 1px solid #ddd;
+  background: var(--surface);
+  border: 1px solid var(--border);
   border-radius: 8px;
 }
 
 .tool-result p {
   margin: 0 0 8px;
-  color: #666;
+  color: var(--muted);
   font-size: 14px;
 }
 
 .tool-result a {
   font-weight: 600;
+}
+
+.theme-toggle {
+  display: flex;
+  gap: 4px;
+  margin-top: 24px;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--background);
+}
+
+.theme-toggle button {
+  flex: 1;
+  padding: 6px 8px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+
+.theme-toggle button:hover {
+  background: var(--hover);
+}
+
+.theme-toggle button.active {
+  background: var(--surface);
+  color: var(--foreground);
 }
 
 /* Mobile */
@@ -235,7 +290,7 @@ a {
   .sidebar {
     width: 100%;
     border-right: 0;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid var(--surface);
   }
 
   .sidebar-brand {

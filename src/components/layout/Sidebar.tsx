@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { tools } from "@/lib/tools";
+import ThemeToggle from "./ThemeToogle";
 
 export default function Sidebar() {
     return (
@@ -11,7 +12,6 @@ export default function Sidebar() {
                 Sam's Toolbox
                 </Link>
             </div>
-
             <nav className="sidebar-nav">
                 <Link href="/" className="sidebar-link">
                   Dashboard
@@ -31,6 +31,8 @@ export default function Sidebar() {
                     </Link>
                 ))}
             </nav>
+            
+            <ThemeToggle />
         </aside>
     );
 }
