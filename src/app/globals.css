@@ -468,3 +468,88 @@ a {
     width: 100%;
   }
 }
+
+/* PDF Reader */
+
+.pdf-reader {
+  width: 100%;
+}
+
+.pdf-reader-file {
+  margin: 20px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.pdf-reader-document {
+  width: 100%;
+  margin-top: 24px;
+}
+
+.pdf-reader-page {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.pdf-reader-page canvas {
+  display: block;
+  max-width: 100%;
+  height: auto !important;
+}
+
+.pdf-reader-toolbar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.pdf-reader-navigation,
+.pdf-reader-zoom {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pdf-reader-toolbar button {
+  min-width: 40px;
+  min-height: 36px;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  color: var(--foreground);
+  cursor: pointer;
+}
+
+.pdf-reader-toolbar button:hover:not(:disabled) {
+  background: var(--hover);
+}
+
+.pdf-reader-toolbar button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.pdf-reader-toolbar span {
+  min-width: 60px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.pdf-reader-loading {
+  margin-top: 24px;
+  color: var(--muted);
+}
