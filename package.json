@@ -12,6 +12,7 @@
     "test": "vitest run"
   },
   "dependencies": {
+    "@primer/octicons-react": "^19.40.0",
     "dotenv": "^17.4.2",
     "drizzle-orm": "^0.45.2",
     "next": "16.3.3",
