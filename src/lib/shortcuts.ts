@@ -7,9 +7,21 @@ export type SoftwareShortcut = {
 
 export const softwareShortcuts: SoftwareShortcut[] = [
     {
-        name: "Photocraft",
+        name: "Artcraft",
         available: true,
         href: "https://app.getartcraft.com/",
+        icon: "",
+    },
+    {
+        name: "DevDocs",
+        available: true,
+        href: "https://devdocs.io/",
+        icon: "",
+    },
+    {
+        name: "Figma",
+        available: true,
+        href: "https://www.figma.com/",
         icon: "",
     },
 ];
