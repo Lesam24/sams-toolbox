@@ -25,6 +25,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <head>
+        <meta name="google-site-verification" content="xv2XWLtM1AESWVktaKZZbGLtgQXUv797Fx-NNkcwFKA" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
