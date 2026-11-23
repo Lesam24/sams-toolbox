@@ -15,7 +15,7 @@
     "@primer/octicons-react": "^19.40.0",
     "dotenv": "^17.4.2",
     "drizzle-orm": "^0.45.2",
-    "next": "16.3.3",
+    "next": "^16.4.6",
     "pdf-lib": "^1.17.1",
     "pdfjs-dist": "^5.4.296",
     "postgres": "^3.4.9",
@@ -29,11 +29,18 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "drizzle-kit": "^0.31.10",
+    "drizzle-kit": "^0.31.11",
     "eslint": "^9",
     "eslint-config-next": "16.3.3",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "^4.1.11"
+  },
+  "allowScripts": {
+    "unrs-resolver@1.12.2": true,
+    "es5-ext@0.10.64": true,
+    "esbuild@0.18.20": true,
+    "esbuild@0.25.12": true,
+    "esbuild@0.28.2": true
   }
 }
